@@ -74,6 +74,7 @@ python logcml_<dataset>_<models>.py --prior_prec_init=<weight decay parameter> \
 
 ![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
 
+test
 
 ## Deep kernel learning 
 
@@ -88,3 +89,4 @@ python exact_runner.py --m=<the number of datapoints on which we condition> \
 ```
 
 ![Deep kernel learning experiments](./demos/dkl_results.png)
+
