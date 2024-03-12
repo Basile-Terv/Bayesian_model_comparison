@@ -45,7 +45,7 @@ parser.add_argument('--result_folder', default='./results/cifar100/new_hypers/cn
 args = parser.parse_args()
 
 
-data_directory = "/datasets"
+data_directory = "/Data/basile-terver/__data__"
 
 seed = 10
 batchsize = 128
@@ -84,7 +84,7 @@ def train_model(depth,
                 prior_prec_init,
                 prior_structure,
                 hessian_structure,
-                n_epoch=250,
+                n_epoch=10,
                 batchsize=128,
                 seed=10,
                 optimizehypers=False,
@@ -281,19 +281,20 @@ def train_model(depth,
     
 widths_cifar100_cnn = [4, 8, 16, 32, 64]
 depths_cifar100_cnn = [1, 2, 3, 4, 5]
+wds = [100.0, 0.1, 0.01, 0.0001]
 
-
-for depth in depths_cifar100_cnn:
-    for width in widths_cifar100_cnn:
-        train_model(depth,
-                    width,
-                    args.decay,
-                    args.prior_structure,
-                    args.hessian_structure,
-                    base_lr = args.base_lr,
-                    use_sgdr = args.use_sgdr,
-                    optimizehypers = args.optimizehypers,
-                    hypers_lr = args.hypers_lr,
-                    batchnorm = args.batchnorm,
-                    chk_path = args.chk_path,
-                    result_folder = args.result_folder)
+for decay in wds:  
+    for depth in depths_cifar100_cnn:
+        for width in widths_cifar100_cnn:
+            train_model(depth,
+                        width,
+                        decay,
+                        args.prior_structure,
+                        args.hessian_structure,
+                        base_lr = args.base_lr,
+                        use_sgdr = args.use_sgdr,
+                        optimizehypers = args.optimizehypers,
+                        hypers_lr = args.hypers_lr,
+                        batchnorm = args.batchnorm,
+                        chk_path = args.chk_path,
+                        result_folder = args.result_folder)
