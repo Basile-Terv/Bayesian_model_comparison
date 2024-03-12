@@ -271,7 +271,7 @@ def checkpoint(acc, epoch, path, net, chk_path):
     }
     # load with net.load_state_dict(torch.load(path))
     if not os.path.isdir(chk_path):
-        os.mkdir(chk_path)
+        os.makedirs(chk_path, exist_ok=True)
     new_path = './' + chk_path + '/' + path + '.ckpt'
     torch.save(state, new_path)
 

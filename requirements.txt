@@ -5,3 +5,7 @@ scipy
 scikit-learn
 numpy
 matplotlib
+seaborn
+tqdm
+progress_bar
+pandas

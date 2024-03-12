@@ -1,0 +1,2 @@
+model	wid_multi	trainsize	glb_test_acc	glb_train_acc	glb_test_stdev	ctParams	GPUs	time	data	run_lbl	good_runs	lr	avg_bma_test_acc	avg_bma_test_ll	avg_cmll	avg_mll
+LeNet	1	250	0	0	-1	62006	1	03/12 14:53	CIFAR10	runlbl	0	0.1	29.67	-3.96428951459307	-166.56561752746023	-238.1886875

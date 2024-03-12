@@ -703,7 +703,7 @@ if __name__ == '__main__':
         print("bma_test_ll: {}, bma_test_accuracy: {}, mll {} ".format(bma_test_ll, bma_test_accuracy, mll))
         
 
-        save_dict = {'model': args.model, 'wid_multi': args.width_multiplier, 'trainsize': args.trainsize, 'test_acc': test_acc, 'train_acc': train_accuracy, 'train_loss': train_loss, 'ctParams': ctParams, 'GPUs': torch.cuda.device_count(), 'epochs' : epoch,   'train_time': train_time, 'test_time': test_time, 'time': strftime("%m/%d %H:%M", localtime()), 'data': args.dataset,  'run_lbl': args.run_label, 'lr' : args.lr, 'maxEpochs' : args.epochs, 'bma_test_acc': bma_test_accuracy, 'bma_test_ll': bma_test_ll, 'cmll': cmll, 'mll': mll}
+        save_dict = {'model': args.model, 'wid_multi': args.width_multiplier, 'trainsize': args.trainsize, 'test_acc': test_acc, 'train_acc': train_accuracy, 'train_loss': train_loss, 'ctParams': ctParams, 'GPUs': torch.cuda.device_count(), 'epochs' : epoch,   'train_time': train_time, 'test_time': test_time, 'time': strftime("%m/%d %H:%M", localtime()), 'data': args.dataset,  'run_lbl': args.run_label, 'lr' : args.lr, 'maxEpochs' : args.epochs, 'bma_test_acc': bma_test_accuracy, 'bma_test_ll': bma_test_ll, 'cmll': cmll, 'mll': mll, 'decay': args.decay}
         fileName = args.dataset + args.runs_save_name
         save_output_from_dict(save_dict, save_dir=args.save_path, save_name=fileName)
 
@@ -729,7 +729,7 @@ if __name__ == '__main__':
     avg_cmll = np.mean(cmll_list)
     avg_mll = np.mean(mll_list)    
 
-    save_dict = {'model': args.model, 'wid_multi': args.width_multiplier, 'trainsize': args.trainsize, 'glb_test_acc': global_test_acc, 'glb_train_acc': global_train_accuracy, 'glb_test_stdev': global_test_stdev, 'ctParams': ctParams, 'GPUs': torch.cuda.device_count(), 'time': strftime("%m/%d %H:%M", localtime()), 'data': args.dataset,  'run_lbl': args.run_label,'good_runs': num_good_runs, 'lr' : args.lr, "avg_bma_test_acc": avg_bma_test_acc, "avg_bma_test_ll": avg_bma_test_ll, "avg_cmll": avg_cmll, "avg_mll": avg_mll}
+    save_dict = {'model': args.model, 'wid_multi': args.width_multiplier, 'trainsize': args.trainsize, 'glb_test_acc': global_test_acc, 'glb_train_acc': global_train_accuracy, 'glb_test_stdev': global_test_stdev, 'ctParams': ctParams, 'GPUs': torch.cuda.device_count(), 'time': strftime("%m/%d %H:%M", localtime()), 'data': args.dataset,  'run_lbl': args.run_label,'good_runs': num_good_runs, 'lr' : args.lr, "avg_bma_test_acc": avg_bma_test_acc, "avg_bma_test_ll": avg_bma_test_ll, "avg_cmll": avg_cmll, "avg_mll": avg_mll, 'decay': args.decay}
 #move num_good_runs right after stdev in next set of runs
     save_output_from_dict(save_dict, save_dir=args.save_path, save_name=args.save_name)
     if args.save_model:

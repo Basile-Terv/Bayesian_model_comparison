@@ -23,6 +23,7 @@ from laplace import Laplace
 from laplace.curvature import AsdlEF
 import sys
 import tqdm
+import scipy
 
 import new_models
 from utils import *

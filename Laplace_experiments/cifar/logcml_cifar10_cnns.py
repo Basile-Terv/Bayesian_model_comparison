@@ -65,7 +65,7 @@ torch.backends.cudnn.deterministic = True
 use_cuda = torch.cuda.is_available()
 
 
-data_directory = "/datasets"
+data_directory = "/Data/basile-terver/__data__"
 batchsize = args.batch_size
 
 # Data
