@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-for dset in {boston,power,energy,concrete,winered,winewhite}
+for dset in {protein,yacht,naval,concrete,winered,winewhite}
 do
     for m in {0.1,0.25,0.5,0.75,0.9}
     do

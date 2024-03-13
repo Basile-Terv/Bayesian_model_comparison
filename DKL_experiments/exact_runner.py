@@ -1,5 +1,6 @@
-import bayesian_benchmarks as bb
-from bayesian_benchmarks.data import regression_datasets, get_regression_data
+#import bayesian_benchmarks as bb
+
+from data import regression_datasets, get_regression_data
 import gpytorch
 import torch
 from torch.utils.data import TensorDataset, DataLoader
