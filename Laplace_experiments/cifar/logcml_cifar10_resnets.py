@@ -1,4 +1,4 @@
-'''Train CIFAR100 with PyTorch.'''
+'''Train CIFAR10 with PyTorch.'''
 from __future__ import print_function
 
 import sys
@@ -23,6 +23,7 @@ from laplace import Laplace
 from laplace.curvature import AsdlEF
 import sys
 import tqdm
+import scipy
 
 import new_models
 from utils import *
@@ -37,7 +38,7 @@ import random
 import math
 
 
-parser = argparse.ArgumentParser(description='PyTorch CIFAR100 Training')
+parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--batch_size', default=32, type=int, help='batch size')
 parser.add_argument('--sample_batch_size', default=16, type=int, help='batch size used when computing the bma accuracy')
 parser.add_argument('--seed', default=10, type=int, help='seed')
@@ -65,7 +66,11 @@ torch.backends.cudnn.deterministic = True
 use_cuda = torch.cuda.is_available()
 
 
-data_directory = "/datasets"
+data_directory = "/Data/basile-terver/__data__"
+subsets_file_path = './data/cifar10_subsets.npz'
+if not os.path.exists('./data'):
+    os.makedirs('./data')
+
 batchsize = args.batch_size
 
 # Data
@@ -87,8 +92,25 @@ trainset1 = torchvision.datasets.CIFAR10(root=data_directory, train=True, downlo
 trainset2 = torchvision.datasets.CIFAR10(root=data_directory, train=True, download=True, transform=transform_train)
 trainset3 = torchvision.datasets.CIFAR10(root=data_directory, train=True, download=True, transform=transform_train)
 
+if not os.path.exists(subsets_file_path):
+    n = len(trainset.data)
+    idx = np.arange(n)
+    np.random.shuffle(idx)
+
+    n1, n2, n3 = int(n * 0.8), int(n * 0.05), int(n * 0.15)  # Calculating indices for 80%, 5%, and 15% splits
+    subset_1 = idx[:n1]
+    subset_2 = idx[n1:n1+n2]
+    subset_3 = idx[n1+n2:]  # Ensuring the rest of the data is used for the third subset
+
+    x, y = trainset.data, np.array(trainset.targets)
+    x1, y1 = x[subset_1], y[subset_1]  # Training data
+    x2, y2 = x[subset_2], y[subset_2]  # Validation data
+    x3, y3 = x[subset_3], y[subset_3]  # Test data
+
+    np.savez(subsets_file_path, x1=x1, y1=y1, x2=x2, y2=y2, x3=x3, y3=y3)  # Save subsets to the file
+
 # getting subsets of the data 
-subsets_data = np.load('./data/cifar10_subsets.npz')
+subsets_data = np.load(subsets_file_path)
 trainset1.data = subsets_data['x1']
 trainset1.targets = subsets_data['y1'].tolist()
 trainset2.data = subsets_data['x2']
@@ -245,6 +267,9 @@ def get_mll_acc(arch,
     fullpath2 = fullpath + '_baselr_' + str(base_lr)
     cknew_path2 = fullpath2 + '_final'
     cknew_path2 = './' + fulltrain_chk_path + '/' + cknew_path2 + '.ckpt'
+
+    print("cknew_path1:",cknew_path1)
+    print("cknew_path2:",cknew_path2)
     
     if not os.path.exists(cknew_path1) and not os.path.exists(cknew_path2):
         print("the corresponding fully trained model does not exist ... ") 

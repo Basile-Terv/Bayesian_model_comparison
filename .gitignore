@@ -1,5 +1,7 @@
 # Custom
 **/data/**
+**cifar/checkpoint/**
+**cifar/results/**
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

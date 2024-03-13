@@ -66,7 +66,10 @@ torch.backends.cudnn.deterministic = True
 use_cuda = torch.cuda.is_available()
 
 
-data_directory = "/datasets"
+data_directory = "/Data/basile-terver/__data__"
+subsets_file_path = './data/cifar100_subsets.npz'
+if not os.path.exists('./data'):
+    os.makedirs('./data')
 batchsize = args.batch_size
 
 # Data
@@ -89,6 +92,23 @@ trainset = torchvision.datasets.CIFAR100(root=data_directory, train=True, downlo
 trainset1 = torchvision.datasets.CIFAR100(root=data_directory, train=True, download=True, transform=transform_train)
 trainset2 = torchvision.datasets.CIFAR100(root=data_directory, train=True, download=True, transform=transform_train)
 trainset3 = torchvision.datasets.CIFAR100(root=data_directory, train=True, download=True, transform=transform_train)
+
+if not os.path.exists(subsets_file_path):
+    n = len(trainset.data)
+    idx = np.arange(n)
+    np.random.shuffle(idx)
+
+    n1, n2, n3 = int(n * 0.8), int(n * 0.05), int(n * 0.15)  # Calculating indices for 80%, 5%, and 15% splits
+    subset_1 = idx[:n1]
+    subset_2 = idx[n1:n1+n2]
+    subset_3 = idx[n1+n2:]  # Ensuring the rest of the data is used for the third subset
+
+    x, y = trainset.data, np.array(trainset.targets)
+    x1, y1 = x[subset_1], y[subset_1]  # Training data
+    x2, y2 = x[subset_2], y[subset_2]  # Validation data
+    x3, y3 = x[subset_3], y[subset_3]  # Test data
+
+    np.savez(subsets_file_path, x1=x1, y1=y1, x2=x2, y2=y2, x3=x3, y3=y3)  # Save subsets to the file
 
 # getting subsets of the data 
 subsets_data = np.load('./data/cifar100_subsets.npz')
@@ -379,7 +399,7 @@ def get_mll_acc(width,
               
 widths_cifar100_cnn = [4, 8, 16, 32, 64]
 depths_cifar100_cnn = [1, 2, 3, 4, 5]
-wds = [0.0001, 0.0001, 0.001, 0.01, 0.1, 100.0]
+wds = [100.0, 0.1, 0.01, 0.0001]
 
 for decay in wds:              
     for depth in depths_cifar100_cnn:

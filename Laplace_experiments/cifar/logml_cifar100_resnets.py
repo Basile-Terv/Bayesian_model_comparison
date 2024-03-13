@@ -289,19 +289,20 @@ if args.batchnorm:
     arch_names = ["resnet20", "resnet32", "resnet44", "resnet56", "resnet110"] 
 else:
     arch_names = ["fixup_resnet20", "fixup_resnet32", "fixup_resnet44", "fixup_resnet56", "fixup_resnet110"] 
+wds = [100.0, 0.1, 0.01, 0.0001]
 
-
-for arch in arch_names:
-    for width in widths_cifar100:
-        train_model(arch,
-                    width,
-                    args.decay,
-                    args.prior_structure,
-                    args.hessian_structure,
-                    base_lr = args.base_lr,
-                    use_sgdr = args.use_sgdr,
-                    optimizehypers = args.optimizehypers,
-                    hypers_lr = args.hypers_lr,
-                    batchnorm = args.batchnorm,
-                    chk_path = args.chk_path,
-                    result_folder = args.result_folder)
+for decay in wds:
+    for arch in arch_names:
+        for width in widths_cifar100:
+            train_model(arch,
+                        width,
+                        decay,
+                        args.prior_structure,
+                        args.hessian_structure,
+                        base_lr = args.base_lr,
+                        use_sgdr = args.use_sgdr,
+                        optimizehypers = args.optimizehypers,
+                        hypers_lr = args.hypers_lr,
+                        batchnorm = args.batchnorm,
+                        chk_path = args.chk_path,
+                        result_folder = args.result_folder)
