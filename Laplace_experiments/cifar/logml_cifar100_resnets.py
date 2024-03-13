@@ -45,7 +45,7 @@ parser.add_argument('--result_folder', default='./results/cifar100/optimized_la/
 args = parser.parse_args()
 
 
-data_directory = "/datasets"
+data_directory = "/Data/basile-terver/__data__"
 
 seed = 10
 batchsize = 128
