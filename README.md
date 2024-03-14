@@ -88,9 +88,9 @@ Remark: the authors of the original paper and repo did not provide the code to r
 
 Remark: we did not have time to train resnets for other decay/prior values than $\lambda=100$.
 
-![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
+The below figure from the original paper is a summary of all the figures of Appendix H:
 
-test
+![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
 
 ## Deep kernel learning 
 
