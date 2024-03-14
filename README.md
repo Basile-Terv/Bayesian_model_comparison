@@ -86,6 +86,10 @@ The below figure from the original paper is a summary of all the figures of Appe
 
 ![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
 
+## Gaussian process kernel learning
+
+We mainly played with the jupyter notebook located in `./GP_experiments/marginal_lik_gps_rq copy.ipynb', presenting a fitting of a gaussian process defined by a Rationale-Quadratic kernel. The main ideas are to change the parameters $\texttt{true_lengthscale}$ and $\texttt{true_noise}$ and the boolean $\texttt{overestimate}$, which triggers the main change in the behavior of the LML vs the test likelihood. 
+
 ## Deep kernel learning 
 
 To reproduce results for the deep kernel learning experiments, navigate to `./DKL_experiments/` and run the following:
