@@ -130,5 +130,5 @@ dmypy.json
 *.pt
 
 #docs to ignore from DKL
-/DKL_experiments/data
+#/DKL_experiments/data
 exact_plotter.ipynb
