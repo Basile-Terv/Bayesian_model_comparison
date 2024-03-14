@@ -42,7 +42,7 @@ pip install laplace-torch
 You can reproduce the GP experiments by running the Jupyter notebooks in `./GP_experiments/`. 
 
 ## CIFAR-10 and CIFAR-100
-Careful: for code simplicity, we have hardcoded our data path at the beginning of all the scripts as ''data_directory = "/Data/basile-terver/__data__"'' but one should adapt this path to store heavy dataset files in a relevant location.
+Careful: for code simplicity, we have hardcoded our data path at the beginning of all the scripts as data_directory = `"/Data/basile-terver/__data__"` but one should adapt this path to store heavy dataset files in a relevant location.
 
 To train ResNet and CNN models and compute their Laplace marginal likelihood for CIFAR-10 and CIFAR-100 as in section 6 of the paper, navigate to `./Laplace_experiments/cifar` and run the following: 
 ```bash
