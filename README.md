@@ -1,33 +1,29 @@
 # Bayesian Model Selection, the Marginal Likelihood, and Generalization
 
 
-This repository contains experiments for the paper [_Bayesian Model Selection, the Marginal Likelihood, and Generalization_](https://arxiv.org/abs/2202.11678) by [Sanae Lotfi](https://sanaelotfi.github.io/), [Pavel Izmailov](https://izmailovpavel.github.io/), [Gregory Benton](g-benton.github.io), [Micah Goldblum](https://goldblum.github.io/), and [Andrew Gordon Wilson](https://cims.nyu.edu/~andrewgw/).
+This repository contains experiments of the group student project for the Bayesian Machine Learning class of the MVA master 2023-2024. 
+
+Authors:
+- Basile Terver
+- Léa Khalil
+- Jean Dimier
+
+We study the paper [_Bayesian Model Selection, the Marginal Likelihood, and Generalization_](https://arxiv.org/abs/2202.11678) by [Sanae Lotfi](https://sanaelotfi.github.io/), [Pavel Izmailov](https://izmailovpavel.github.io/), [Gregory Benton](g-benton.github.io), [Micah Goldblum](https://goldblum.github.io/), and [Andrew Gordon Wilson](https://cims.nyu.edu/~andrewgw/), reproduce and extend some of their experiments to other datasets.
 
 
 ## Introduction
 
-In this paper, we discuss the marginal likelihood as a model comparison tool, and fundamentally re-evaluate whether it is the right metric for predicting generalization of trained models, and learning parameters.
-- We discuss the strengths and weaknesses of the marginal likelihood for model selection, hypothesis testing, architecture search and hyperparameter tuning. 
-- We show that the marginal likelihood is answering an entirely different question than the generalization question: "how well will my model generalize on unseen data?", which makes the difference between hypothesis testing and predicting generalization.
-- We show that optimizing the marginal likelihood can lead to overfitting and underfitting in the function space. 
-- We revisit the connection between the marginal likelihood and the training efficiency, and show that models that train faster don't necessarily generalize better or have higher marginal likelihood. 
-- We demonstrate how the Laplace approximation of the marginal likelihood can fail in architecture search and hyperparameter tuning of deep neural networks. 
-- We study the conditional marginal likelihood and show that it provides a compelling alternative to the marginal likelihood for neural architecture comparison, deep kernel hyperparameter learning, and transfer learning. 
+In this paper, the authors discuss the marginal likelihood as a model comparison tool, and fundamentally re-evaluate whether it is the right metric for predicting generalization of trained models, and learning parameters.
+- They discuss the strengths and weaknesses of the marginal likelihood for model selection, hypothesis testing, architecture search and hyperparameter tuning. 
+- They show that the marginal likelihood is answering an entirely different question than the generalization question: "how well will my model generalize on unseen data?", which makes the difference between hypothesis testing and predicting generalization.
+- They show that optimizing the marginal likelihood can lead to overfitting and underfitting in the function space. 
+- They revisit the connection between the marginal likelihood and the training efficiency, and show that models that train faster don't necessarily generalize better or have higher marginal likelihood. 
+- They demonstrate how the Laplace approximation of the marginal likelihood can fail in architecture search and hyperparameter tuning of deep neural networks. 
+- They study the conditional marginal likelihood and show that it provides a compelling alternative to the marginal likelihood for neural architecture comparison, deep kernel hyperparameter learning, and transfer learning. 
 
 ![Pitfalls of the marginal likelihood](./demos/lml_pitfalls.png)
 
-
 In this repository we provide code for reproducing results in the paper.
-
-Please cite our work if you find it helpful in your work:
-```
-@article{lotfi2022bayesian,
-  title={Bayesian Model Selection, the Marginal Likelihood, and Generalization},
-  author={Lotfi, Sanae and Izmailov, Pavel and Benton, Gregory and Goldblum, Micah and Wilson, Andrew Gordon},
-  journal={arXiv preprint arXiv:2202.11678},
-  year={2022}
-}
-```
 
 ## Requirements
 
@@ -42,7 +38,7 @@ pip install laplace-torch
 You can reproduce the GP experiments by running the Jupyter notebooks in `./GP_experiments/`. 
 
 ## CIFAR-10 and CIFAR-100
-Careful: for code simplicity, we have hardcoded our data path at the beginning of all the s
+Careful: for code simplicity, we have hardcoded our data path at the beginning of all the scripts as data_directory = `"/Data/basile-terver/__data__"` but one should adapt this path to store heavy dataset files in a relevant location.
 
 To train ResNet and CNN models and compute their Laplace marginal likelihood for CIFAR-10 and CIFAR-100 as in section 6 of the paper, navigate to `./Laplace_experiments/cifar` and run the following: 
 ```bash
@@ -61,7 +57,7 @@ We have set the default values of the flags of these 4 scripts so that you can s
 
 Then, you can rerun those scripts only on 80% of the train set by modifying inside the script the trainset and testset, and setting --chk_path="checkpoint/cifar10/subset/cnns" for cnns and --chk_path="checkpoint/cifar10/subset/resnets" for resnets.
 
-Remark, We have trained all these models on a NVIDIA RTX A5000 with 24GB of GPU RAM. Training so many models for 250 epochs each takes about a day.
+Remark: we have trained all these models on a NVIDIA RTX A5000 with 24GB of GPU RAM. Training so many models for 250 epochs each takes about a day.
 
 Then, once we have trained (with all or with 80% of the data) all our models, we can compute the conditional marginal likelihood, MAP Test Accuracy, BMA Test Accuracy, MAP Test Log-Likelihood and BMA Test Log-Likelihood as follows:
 
@@ -78,17 +74,19 @@ python logcml_<dataset>_<models>.py --prior_prec_init=<weight decay parameter> \
                  --result_folder=<path to save the results> 
 ```
 
-Remark: We had to create './data/cifar100_subsets.npz' by ourselves as it was missing in the repository of the authors, as well as fixing other bugs in the code.
+Remark: We had to create `./Laplace_experiments/cifar/data/cifar100_subsets.npz` by ourselves as it was missing in the repository of the authors, as well as fixing other bugs in the code.
 
 Remark: Running those scripts takes a comparable amount of time to the proper training with the logml_<dataset>_<models>.py scripts as it is not parallelizable and mostly makes use of CPUs.
 
-Once you have run all these scripts, you can reproduce the plots of the original paper by running the Laplace_experiments/plot_neural_arch_search.ipynb notebook, where the last plot is to compared with the plots of Appendix H of the original paper. We have only shown the results for CIFAR10 but the exact same functions can be used for CIFAR100 results by just adapting the files paths.
+Once you have run all these scripts, you can reproduce the plots of the original paper by running the `Laplace_experiments/plot_neural_arch_search.ipynb` notebook, where the last plot is to compared with the plots of Appendix H of the original paper. We have only shown the results for CIFAR10 but the exact same functions can be used for CIFAR100 results by just adapting the files paths. 
+
+Remark: the authors of the original paper and repo did not provide the code to reproduce their plots from Appendix H, we provide such code with this notebook.
 
 Remark: we did not have time to train resnets for other decay/prior values than $\lambda=100$.
 
-![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
+The below figure from the original paper is a summary of all the figures of Appendix H:
 
-test
+![Neural hyperparameter optimization for CIFAR-100](./demos/laplace_cifar100.png)
 
 ## Deep kernel learning 
 
