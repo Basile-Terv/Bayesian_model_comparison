@@ -1,33 +1,24 @@
 # Bayesian Model Selection, the Marginal Likelihood, and Generalization
 
 
-This repository contains experiments of the group student project for the Bayesian Machine Learning class of the MVA master 2023-2024. We study the paper [_Bayesian Model Selection, the Marginal Likelihood, and Generalization_](https://arxiv.org/abs/2202.11678) by [Sanae Lotfi](https://sanaelotfi.github.io/), [Pavel Izmailov](https://izmailovpavel.github.io/), [Gregory Benton](g-benton.github.io), [Micah Goldblum](https://goldblum.github.io/), and [Andrew Gordon Wilson](https://cims.nyu.edu/~andrewgw/), reproduce and extend some of their experiments to other datasets.
+This repository contains experiments of the group student project for the Bayesian Machine Learning class of the MVA master 2023-2024. 
+
+We study the paper [_Bayesian Model Selection, the Marginal Likelihood, and Generalization_](https://arxiv.org/abs/2202.11678) by [Sanae Lotfi](https://sanaelotfi.github.io/), [Pavel Izmailov](https://izmailovpavel.github.io/), [Gregory Benton](g-benton.github.io), [Micah Goldblum](https://goldblum.github.io/), and [Andrew Gordon Wilson](https://cims.nyu.edu/~andrewgw/), reproduce and extend some of their experiments to other datasets.
 
 
 ## Introduction
 
 In this paper, the authors discuss the marginal likelihood as a model comparison tool, and fundamentally re-evaluate whether it is the right metric for predicting generalization of trained models, and learning parameters.
-- We discuss the strengths and weaknesses of the marginal likelihood for model selection, hypothesis testing, architecture search and hyperparameter tuning. 
-- We show that the marginal likelihood is answering an entirely different question than the generalization question: "how well will my model generalize on unseen data?", which makes the difference between hypothesis testing and predicting generalization.
-- We show that optimizing the marginal likelihood can lead to overfitting and underfitting in the function space. 
-- We revisit the connection between the marginal likelihood and the training efficiency, and show that models that train faster don't necessarily generalize better or have higher marginal likelihood. 
-- We demonstrate how the Laplace approximation of the marginal likelihood can fail in architecture search and hyperparameter tuning of deep neural networks. 
-- We study the conditional marginal likelihood and show that it provides a compelling alternative to the marginal likelihood for neural architecture comparison, deep kernel hyperparameter learning, and transfer learning. 
+- They discuss the strengths and weaknesses of the marginal likelihood for model selection, hypothesis testing, architecture search and hyperparameter tuning. 
+- They show that the marginal likelihood is answering an entirely different question than the generalization question: "how well will my model generalize on unseen data?", which makes the difference between hypothesis testing and predicting generalization.
+- They show that optimizing the marginal likelihood can lead to overfitting and underfitting in the function space. 
+- They revisit the connection between the marginal likelihood and the training efficiency, and show that models that train faster don't necessarily generalize better or have higher marginal likelihood. 
+- They demonstrate how the Laplace approximation of the marginal likelihood can fail in architecture search and hyperparameter tuning of deep neural networks. 
+- They study the conditional marginal likelihood and show that it provides a compelling alternative to the marginal likelihood for neural architecture comparison, deep kernel hyperparameter learning, and transfer learning. 
 
 ![Pitfalls of the marginal likelihood](./demos/lml_pitfalls.png)
 
-
 In this repository we provide code for reproducing results in the paper.
-
-Please cite our work if you find it helpful in your work:
-```
-@article{lotfi2022bayesian,
-  title={Bayesian Model Selection, the Marginal Likelihood, and Generalization},
-  author={Lotfi, Sanae and Izmailov, Pavel and Benton, Gregory and Goldblum, Micah and Wilson, Andrew Gordon},
-  journal={arXiv preprint arXiv:2202.11678},
-  year={2022}
-}
-```
 
 ## Requirements
 
