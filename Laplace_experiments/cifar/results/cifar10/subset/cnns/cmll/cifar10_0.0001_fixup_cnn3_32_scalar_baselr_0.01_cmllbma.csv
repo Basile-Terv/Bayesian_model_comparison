@@ -1,0 +1,2 @@
+num_params,decay,best temperature,test acc,bma test acc,bma s3 acc,test LL,bma test LL,cmll
+98384,0.0001,0.0002,72.48,72.49,76.22666666666666,-0.8198952097705507,-0.8198637360638938,-5754.278447117304
