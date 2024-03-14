@@ -80,9 +80,7 @@ Remark: Running those scripts takes a comparable amount of time to the proper tr
 
 Once you have run all these scripts, you can reproduce the plots of the original paper by running the `Laplace_experiments/plot_neural_arch_search.ipynb` notebook, where the last plot is to compared with the plots of Appendix H of the original paper. We have only shown the results for CIFAR10 but the exact same functions can be used for CIFAR100 results by just adapting the files paths. 
 
-Remark: the authors of the original paper and repo did not provide the code to reproduce their plots from Appendix H, we provide such code with this notebook.
-
-Remark: we did not have time to train resnets for other decay/prior values than $\lambda=100$.
+Remarks: the authors of the original paper and repo did not provide the code to reproduce their plots from Appendix H, we provide such code with this notebook. We did not have time to train resnets for other decay/prior values than $\lambda=100$. Finally, we push our model checkpoints and LML and CLML results to our repository to save the user costly training.
 
 The below figure from the original paper is a summary of all the figures of Appendix H:
 
