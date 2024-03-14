@@ -88,7 +88,7 @@ The below figure from the original paper is a summary of all the figures of Appe
 
 ## Gaussian process kernel learning
 
-We mainly played with the jupyter notebook located in `./GP_experiments/marginal_lik_gps_rq copy.ipynb', presenting a fitting of a gaussian process defined by a Rationale-Quadratic kernel. The main ideas are to change the parameters 'true_lengthscale' and 'true_noise' and the boolean 'overestimate', which triggers the main change in the behavior of the LML vs the test likelihood. 
+We mainly played with the jupyter notebook located in `./GP_experiments/marginal_lik_gps_rq copy.ipynb`, presenting a fitting of a gaussian process defined by a Rationale-Quadratic kernel. The main ideas are to change the parameters `true_lengthscale` and `true_noise` and the boolean `overestimate`, which triggers the main change in the behavior of the LML vs the test likelihood. 
 
 ## Deep kernel learning 
 
