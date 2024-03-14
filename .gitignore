@@ -128,7 +128,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.pt
-
-#docs to ignore from DKL
-#/DKL_experiments/data
-exact_plotter.ipynb
