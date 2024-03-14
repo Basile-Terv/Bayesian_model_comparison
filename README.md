@@ -6,7 +6,7 @@ This repository contains experiments of the group student project for the Bayesi
 
 ## Introduction
 
-In this paper, we discuss the marginal likelihood as a model comparison tool, and fundamentally re-evaluate whether it is the right metric for predicting generalization of trained models, and learning parameters.
+In this paper, the authors discuss the marginal likelihood as a model comparison tool, and fundamentally re-evaluate whether it is the right metric for predicting generalization of trained models, and learning parameters.
 - We discuss the strengths and weaknesses of the marginal likelihood for model selection, hypothesis testing, architecture search and hyperparameter tuning. 
 - We show that the marginal likelihood is answering an entirely different question than the generalization question: "how well will my model generalize on unseen data?", which makes the difference between hypothesis testing and predicting generalization.
 - We show that optimizing the marginal likelihood can lead to overfitting and underfitting in the function space. 
@@ -78,11 +78,13 @@ python logcml_<dataset>_<models>.py --prior_prec_init=<weight decay parameter> \
                  --result_folder=<path to save the results> 
 ```
 
-Remark: We had to create './data/cifar100_subsets.npz' by ourselves as it was missing in the repository of the authors, as well as fixing other bugs in the code.
+Remark: We had to create `./Laplace_experiments/cifar/data/cifar100_subsets.npz` by ourselves as it was missing in the repository of the authors, as well as fixing other bugs in the code.
 
 Remark: Running those scripts takes a comparable amount of time to the proper training with the logml_<dataset>_<models>.py scripts as it is not parallelizable and mostly makes use of CPUs.
 
-Once you have run all these scripts, you can reproduce the plots of the original paper by running the Laplace_experiments/plot_neural_arch_search.ipynb notebook, where the last plot is to compared with the plots of Appendix H of the original paper. We have only shown the results for CIFAR10 but the exact same functions can be used for CIFAR100 results by just adapting the files paths.
+Once you have run all these scripts, you can reproduce the plots of the original paper by running the `Laplace_experiments/plot_neural_arch_search.ipynb` notebook, where the last plot is to compared with the plots of Appendix H of the original paper. We have only shown the results for CIFAR10 but the exact same functions can be used for CIFAR100 results by just adapting the files paths. 
+
+Remark: the authors of the original paper and repo did not provide the code to reproduce their plots from Appendix H, we provide such code with this notebook.
 
 Remark: we did not have time to train resnets for other decay/prior values than $\lambda=100$.
 
