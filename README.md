@@ -3,6 +3,11 @@
 
 This repository contains experiments of the group student project for the Bayesian Machine Learning class of the MVA master 2023-2024. 
 
+Authors:
+- Basile Terver
+- Léa Khalil
+- Jean Dimier
+
 We study the paper [_Bayesian Model Selection, the Marginal Likelihood, and Generalization_](https://arxiv.org/abs/2202.11678) by [Sanae Lotfi](https://sanaelotfi.github.io/), [Pavel Izmailov](https://izmailovpavel.github.io/), [Gregory Benton](g-benton.github.io), [Micah Goldblum](https://goldblum.github.io/), and [Andrew Gordon Wilson](https://cims.nyu.edu/~andrewgw/), reproduce and extend some of their experiments to other datasets.
 
 
