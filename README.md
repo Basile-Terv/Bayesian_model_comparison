@@ -57,7 +57,7 @@ We have set the default values of the flags of these 4 scripts so that you can s
 
 Then, you can rerun those scripts only on 80% of the train set by modifying inside the script the trainset and testset, and setting --chk_path="checkpoint/cifar10/subset/cnns" for cnns and --chk_path="checkpoint/cifar10/subset/resnets" for resnets.
 
-Remark, We have trained all these models on a NVIDIA RTX A5000 with 24GB of GPU RAM. Training so many models for 250 epochs each takes about a day.
+Remark: we have trained all these models on a NVIDIA RTX A5000 with 24GB of GPU RAM. Training so many models for 250 epochs each takes about a day.
 
 Then, once we have trained (with all or with 80% of the data) all our models, we can compute the conditional marginal likelihood, MAP Test Accuracy, BMA Test Accuracy, MAP Test Log-Likelihood and BMA Test Log-Likelihood as follows:
 
