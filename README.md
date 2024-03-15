@@ -92,14 +92,13 @@ We mainly played with the jupyter notebook located in `./GP_experiments/marginal
 
 ## Deep kernel learning 
 
-To reproduce results for the deep kernel learning experiments, navigate to `./DKL_experiments/` and run the following:
+In order to launch the deep kernel learning experiments, navigate to ./DKL_experiments/.
+We have reused the previous deep kernel learning files to train a similar network on different datasets from the UCI database. In order to do so, we have directly downloaded from the 'Bayesian_benchmarks' repository the data and path files, which have been added to the folder.
+In order to have a simple framework to rerun the experiments, we have stacked all of the experiments code in the 'DKL_experiments/DKL_exp.ipynb' notebook. 
+We have first defined the model and a 'main' function, and in the last cell of the notebook we run the experiments with the desired datasets, number of training points and cut-off values (everything is modifiable). Carefully check when running the experiments that the models are indeed stored in the '/saved-output/' folder.
+When running the 'get_regression_data('desired dataset')' function, the data should be downloaded locally in a ./data_2/ subfolder of /DKL_experiments/.
 
-```bash
-python exact_runner.py --m=<the number of datapoints on which we condition> \
-				 --losstype=<type of the loss> \
-                 --dataset=<choice of the dataset> \
-                 --ntrain=<number of training points> \
-                 --ntrial=<number of trials > 
+Plots can be reproduced by running the 'DKL_plots.ipynb' notebook. For simplicity reasons, we have hard-encoded the values of 'n_train','m','dataset' which we used in the previous notebook in the experiment and which determine the naming convention of the downloaded models. If you wish to run the experiments with different parameters and trace the subsequent plots, make sure to also modify these parameters in the first cell of the 'DKL_plots.ipynb' notebook.
 ```
 
 ![Deep kernel learning experiments](./demos/dkl_results.png)
