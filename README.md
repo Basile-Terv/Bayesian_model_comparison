@@ -99,7 +99,7 @@ We have first defined the model and a `main` function, and in the last cell of t
 When running the `get_regression_data('desired dataset')` function, the data should be downloaded locally in a `./data_2/ subfolder of /DKL_experiments/.`
 
 Plots can be reproduced by running the 'DKL_plots.ipynb' notebook. For simplicity reasons, we have hard-encoded the values of `n_train`,`m`,`dataset` which we used in the previous notebook in the experiment and which determine the naming convention of the downloaded models. If you wish to run the experiments with different parameters and trace the subsequent plots, make sure to also modify these parameters in the first cell of the `DKL_plots.ipynb` notebook.
-```
+
 
 ![Deep kernel learning experiments](./demos/dkl_results.png)
 
